@@ -41,7 +41,7 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -50,21 +50,19 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-black text-white">
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 glass">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="text-2xl font-bold neon-text"
+              className="text-2xl font-bold text-orange-400"
             >
               RaphTech
             </motion.div>
 
-            {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8">
               {['Accueil', 'À propos', 'Parcours', 'Compétences', 'Contact'].map((item, index) => {
                 const sectionId = ['home', 'about', 'timeline', 'skills', 'contact'][index];
@@ -72,8 +70,8 @@ export default function Home() {
                   <button
                     key={item}
                     onClick={() => scrollToSection(sectionId)}
-                    className={`hover:text-purple-400 transition-colors ${
-                      activeSection === sectionId ? 'text-purple-400' : 'text-white'
+                    className={`transition-colors ${
+                      activeSection === sectionId ? 'text-orange-400' : 'text-white hover:text-orange-400'
                     }`}
                   >
                     {item}
@@ -82,16 +80,14 @@ export default function Home() {
               })}
             </div>
 
-            {/* Mobile Menu Button */}
             <button
-              className="md:hidden"
+              className="md:hidden text-orange-400"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
 
-          {/* Mobile Menu */}
           {isMenuOpen && (
             <motion.div
               initial={{ opacity: 0, y: -20 }}
@@ -104,7 +100,7 @@ export default function Home() {
                   <button
                     key={item}
                     onClick={() => scrollToSection(sectionId)}
-                    className="block w-full text-left py-2 hover:text-purple-400 transition-colors"
+                    className="block w-full text-left py-2 hover:text-orange-400 transition-colors text-white"
                   >
                     {item}
                   </button>
@@ -117,14 +113,13 @@ export default function Home() {
 
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-purple-800/20 to-blue-900/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
         
-        {/* Animated particles */}
         <div className="absolute inset-0">
-          {[...Array(30)].map((_, i) => (
+          {[...Array(20)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-3 h-3 bg-purple-400 rounded-full floating opacity-60"
+              className="absolute w-2 h-2 bg-orange-400 rounded-full floating opacity-40"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -136,19 +131,12 @@ export default function Home() {
         </div>
 
         <div className="flex items-center justify-between w-full max-w-7xl mx-auto px-4 z-10">
-          {/* Left Content */}
           <div className="flex-1 max-w-2xl">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-6xl md:text-8xl font-bold mb-8"
-              style={{
-                background: 'linear-gradient(135deg, #c084fc 0%, #6b21a8 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-              }}
+              className="text-6xl md:text-8xl font-bold mb-8 text-orange-400"
             >
               Welcome
             </motion.h1>
@@ -170,7 +158,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-xl md:text-2xl mb-8 h-12 flex items-center"
             >
-              <span className="text-purple-400 font-semibold">
+              <span className="text-orange-400 font-semibold">
                 <Typewriter
                   words={['technico-commercial', 'entrepreneur', 'gestion d\'équipe', 'marketing digital', 'intelligence artificielle', 'création d\'entreprise']}
                   loop={0}
@@ -191,20 +179,18 @@ export default function Home() {
             >
               <Button
                 onClick={() => scrollToSection('about')}
-                className="bg-white text-purple-900 hover:bg-gray-100 px-8 py-3 rounded-full font-semibold"
+                className="bg-orange-400 text-black hover:bg-orange-500 px-8 py-3 rounded-full font-semibold"
               >
                 GET STARTED
               </Button>
             </motion.div>
 
-            {/* Social Media Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
               className="flex items-center gap-4"
             >
-              {/* LinkedIn */}
               <div className="social-button">
                 <a
                   href="https://www.linkedin.com/in/raphael-theuillon-689139261/"
@@ -214,12 +200,11 @@ export default function Home() {
                 >
                   <div className="floater w-full h-full absolute top-0 left-0 bg-blue-500 rounded-full duration-300 group-hover:-top-8 group-hover:shadow-2xl"></div>
                   <div className="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-blue-500 rounded-full">
-                    <Linkedin className="h-5 w-5 group-hover:text-[#171543] text-white duration-300" />
+                    <Linkedin className="h-5 w-5 group-hover:text-black text-white duration-300" />
                   </div>
                 </a>
               </div>
 
-              {/* GitHub */}
               <div className="social-button">
                 <a
                   href="https://github.com/Raphael91000"
@@ -227,14 +212,13 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="relative w-12 h-12 rounded-full group block"
                 >
-                  <div className="floater w-full h-full absolute top-0 left-0 bg-gray-800 rounded-full duration-300 group-hover:-top-8 group-hover:shadow-2xl"></div>
-                  <div className="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-gray-800 rounded-full">
-                    <Github className="h-5 w-5 group-hover:text-[#171543] text-white duration-300" />
+                  <div className="floater w-full h-full absolute top-0 left-0 bg-gray-600 rounded-full duration-300 group-hover:-top-8 group-hover:shadow-2xl"></div>
+                  <div className="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-gray-600 rounded-full">
+                    <Github className="h-5 w-5 group-hover:text-black text-white duration-300" />
                   </div>
                 </a>
               </div>
 
-              {/* Fiverr */}
               <div className="social-button">
                 <a
                   href="https://www.fiverr.com/users/raph910/seller_dashboard"
@@ -242,26 +226,24 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="relative w-12 h-12 rounded-full group block"
                 >
-                  <div className="floater w-full h-full absolute top-0 left-0 bg-green-500 rounded-full duration-300 group-hover:-top-8 group-hover:shadow-2xl"></div>
-                  <div className="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-green-500 rounded-full">
-                    <Zap className="h-5 w-5 group-hover:text-[#171543] text-white duration-300" />
+                  <div className="floater w-full h-full absolute top-0 left-0 bg-orange-400 rounded-full duration-300 group-hover:-top-8 group-hover:shadow-2xl"></div>
+                  <div className="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-orange-400 rounded-full">
+                    <Zap className="h-5 w-5 group-hover:text-black text-white duration-300" />
                   </div>
                 </a>
               </div>
 
-              {/* Email */}
               <div className="social-button">
                 <button className="relative w-12 h-12 rounded-full group">
-                  <div className="floater w-full h-full absolute top-0 left-0 bg-red-500 rounded-full duration-300 group-hover:-top-8 group-hover:shadow-2xl"></div>
-                  <div className="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-red-500 rounded-full">
-                    <Mail className="h-5 w-5 group-hover:text-[#171543] text-white duration-300" />
+                  <div className="floater w-full h-full absolute top-0 left-0 bg-orange-500 rounded-full duration-300 group-hover:-top-8 group-hover:shadow-2xl"></div>
+                  <div className="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-orange-500 rounded-full">
+                    <Mail className="h-5 w-5 group-hover:text-black text-white duration-300" />
                   </div>
                 </button>
               </div>
             </motion.div>
           </div>
 
-          {/* Right Content - AI Circle */}
           <div className="flex-1 flex justify-center items-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -269,42 +251,37 @@ export default function Home() {
               transition={{ duration: 1, delay: 0.5 }}
               className="relative w-96 h-96"
             >
-              {/* Outer rotating circles */}
               <div className="absolute inset-0 animate-spin" style={{ animationDuration: '20s' }}>
-                <div className="w-full h-full border border-purple-400/30 rounded-full"></div>
-                <div className="absolute top-4 left-4 w-4 h-4 bg-purple-400 rounded-full"></div>
-                <div className="absolute top-8 right-8 w-3 h-3 bg-pink-400 rounded-full"></div>
-                <div className="absolute bottom-6 left-12 w-2 h-2 bg-blue-400 rounded-full"></div>
-                <div className="absolute bottom-12 right-6 w-3 h-3 bg-purple-300 rounded-full"></div>
+                <div className="w-full h-full border border-orange-400/30 rounded-full"></div>
+                <div className="absolute top-4 left-4 w-4 h-4 bg-orange-400 rounded-full"></div>
+                <div className="absolute top-8 right-8 w-3 h-3 bg-orange-500 rounded-full"></div>
+                <div className="absolute bottom-6 left-12 w-2 h-2 bg-orange-300 rounded-full"></div>
+                <div className="absolute bottom-12 right-6 w-3 h-3 bg-orange-400 rounded-full"></div>
               </div>
 
-              {/* Middle rotating circles */}
               <div className="absolute inset-8 animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}>
-                <div className="w-full h-full border border-purple-400/50 rounded-full"></div>
-                <div className="absolute top-2 left-2 w-3 h-3 bg-pink-400 rounded-full"></div>
-                <div className="absolute top-6 right-4 w-2 h-2 bg-purple-400 rounded-full"></div>
-                <div className="absolute bottom-4 left-6 w-4 h-4 bg-blue-400 rounded-full"></div>
+                <div className="w-full h-full border border-orange-400/50 rounded-full"></div>
+                <div className="absolute top-2 left-2 w-3 h-3 bg-orange-500 rounded-full"></div>
+                <div className="absolute top-6 right-4 w-2 h-2 bg-orange-400 rounded-full"></div>
+                <div className="absolute bottom-4 left-6 w-4 h-4 bg-orange-300 rounded-full"></div>
               </div>
 
-              {/* Inner rotating circles */}
               <div className="absolute inset-16 animate-spin" style={{ animationDuration: '10s' }}>
-                <div className="w-full h-full border border-purple-400/70 rounded-full"></div>
-                <div className="absolute top-1 left-1 w-2 h-2 bg-purple-400 rounded-full"></div>
-                <div className="absolute bottom-2 right-2 w-3 h-3 bg-pink-400 rounded-full"></div>
+                <div className="w-full h-full border border-orange-400/70 rounded-full"></div>
+                <div className="absolute top-1 left-1 w-2 h-2 bg-orange-400 rounded-full"></div>
+                <div className="absolute bottom-2 right-2 w-3 h-3 bg-orange-500 rounded-full"></div>
               </div>
 
-              {/* Central AI circle */}
-              <div className="absolute inset-24 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center shadow-2xl">
-                <div className="w-full h-full bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex items-center justify-center border-4 border-white/20">
+              <div className="absolute inset-24 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center shadow-2xl">
+                <div className="w-full h-full bg-gradient-to-br from-orange-500 to-orange-700 rounded-full flex items-center justify-center border-4 border-white/20">
                   <span className="text-4xl font-bold text-white tracking-wider">A.I.</span>
                 </div>
               </div>
 
-              {/* Concentric circles effect */}
               {[...Array(8)].map((_, i) => (
                 <div
                   key={i}
-                  className="absolute rounded-full border border-purple-400/20"
+                  className="absolute rounded-full border border-orange-400/20"
                   style={{
                     top: `${i * 8}px`,
                     left: `${i * 8}px`,
@@ -328,15 +305,15 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 neon-text">À propos</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-orange-400">À propos</h2>
             <Card className="glass neon-glow">
               <CardContent className="p-8">
                 <div className="flex flex-col md:flex-row items-center gap-8">
-                  <div className="w-32 h-32 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center">
+                  <div className="w-32 h-32 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center">
                     <span className="text-2xl font-bold text-white">RT</span>
                   </div>
                   <div className="text-left">
-                    <h3 className="text-2xl font-bold mb-4 text-purple-400">Raphaël Theuillon</h3>
+                    <h3 className="text-2xl font-bold mb-4 text-orange-400">Raphaël Theuillon</h3>
                     <p className="text-gray-300 leading-relaxed">
                       Technico-commercial avec une solide expérience en gestion d'entreprise, vente et bâtiment. 
                       Doté d'un fort esprit d'initiative, d'une excellente capacité d'adaptation et d'un goût prononcé 
@@ -361,55 +338,47 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 neon-text">Mon Parcours</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-orange-400">Mon Parcours</h2>
           </motion.div>
 
           <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-purple-600 to-pink-600 h-full"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-orange-400 to-orange-600 h-full"></div>
 
-            {/* Timeline items */}
             {[
               {
                 year: '2023-2024',
                 title: 'Technico-commercial - Murprotec',
                 description: 'Prospection terrain, gestion relation client, formation nouveaux commerciaux et participation stratégie développement',
-                type: 'experience',
                 side: 'left'
               },
               {
                 year: '2022-2023',
                 title: 'Technico-commercial - CTBG',
                 description: 'Développement portefeuille client, stratégies commerciales, supervision planning et encadrement équipes',
-                type: 'experience',
                 side: 'right'
               },
               {
                 year: '2022',
                 title: 'Restaurant Le Kin Di Thaï (Associé)',
                 description: 'Création et organisation complète, recrutement équipes, stratégie marketing digital et optimisation livraison',
-                type: 'project',
                 side: 'left'
               },
               {
                 year: '2021-2024',
                 title: 'Entreprise de transport colis (Associé)',
                 description: 'Création, gestion de flotte, optimisation tournées avec scan automatisé et négociation tarifaire',
-                type: 'project',
                 side: 'right'
               },
               {
                 year: '2022-2023',
                 title: 'Wash Center',
                 description: 'Lancement projet, développement concept, management équipe et marketing digital',
-                type: 'project',
                 side: 'left'
               },
               {
                 year: '2019-2021',
                 title: 'BTS Bâtiment (Alternance)',
                 description: 'Formation en alternance chez Cazy Guillaume - CFA BTP Blois',
-                type: 'formation',
                 side: 'right'
               }
             ].map((item, index) => (
@@ -421,13 +390,12 @@ export default function Home() {
                 className={`relative mb-12 ${item.side === 'left' ? 'text-right pr-8' : 'text-left pl-8'} 
                   ${item.side === 'left' ? 'md:mr-1/2' : 'md:ml-1/2'}`}
               >
-                {/* Timeline dot */}
-                <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-purple-600 rounded-full border-4 border-white neon-glow"></div>
+                <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-orange-400 rounded-full border-4 border-black neon-glow"></div>
                 
                 <Card className="glass neon-glow">
                   <CardContent className="p-6">
-                    <Badge className="mb-2 bg-purple-600">{item.year}</Badge>
-                    <h3 className="text-xl font-bold mb-2 text-purple-400">{item.title}</h3>
+                    <Badge className="mb-2 bg-orange-400 text-black">{item.year}</Badge>
+                    <h3 className="text-xl font-bold mb-2 text-orange-400">{item.title}</h3>
                     <p className="text-gray-300">{item.description}</p>
                   </CardContent>
                 </Card>
@@ -446,7 +414,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 neon-text">Compétences</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-orange-400">Compétences</h2>
           </motion.div>
 
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -455,49 +423,49 @@ export default function Home() {
                 title: 'Agents IA',
                 icon: Brain,
                 description: 'Création d\'agents IA personnalisés et automatisation de processus métier',
-                color: 'from-purple-600 to-blue-600'
+                color: 'from-orange-400 to-orange-600'
               },
               {
                 title: 'Marketing Digital',
                 icon: Target,
                 description: 'Stratégies multicanales, création de contenus et optimisation ROI',
-                color: 'from-pink-600 to-purple-600'
+                color: 'from-orange-500 to-orange-700'
               },
               {
                 title: 'Gestion d\'équipe',
                 icon: Users,
                 description: 'Management, formation et encadrement des équipes commerciales',
-                color: 'from-blue-600 to-teal-600'
+                color: 'from-orange-400 to-orange-600'
               },
               {
                 title: 'Prospection terrain',
                 icon: Target,
                 description: 'Développement portefeuille client et négociation commerciale',
-                color: 'from-green-600 to-blue-600'
+                color: 'from-orange-500 to-orange-700'
               },
               {
-                title: 'Développement web',
-                icon: Code,
-                description: 'Création de sites web et applications avec technologies modernes',
-                color: 'from-orange-600 to-red-600'
+                title: 'Négociation commerciale',
+                icon: MessageSquare,
+                description: 'Excellence en négociation avec clients et fournisseurs',
+                color: 'from-orange-400 to-orange-600'
               },
               {
                 title: 'Création d\'entreprise',
                 icon: Zap,
                 description: 'Lancement de projets, gestion complète et développement business',
-                color: 'from-yellow-600 to-orange-600'
+                color: 'from-orange-500 to-orange-700'
               },
               {
-                title: 'Automatisation',
+                title: 'Gestion de projet',
+                icon: Code,
+                description: 'Coordination complète de projets complexes et multidisciplinaires',
+                color: 'from-orange-400 to-orange-600'
+              },
+              {
+                title: 'Stratégie d\'entreprise',
                 icon: Brain,
-                description: 'Optimisation des processus et mise en place de solutions automatisées',
-                color: 'from-indigo-600 to-purple-600'
-              },
-              {
-                title: 'Relation client',
-                icon: MessageSquare,
-                description: 'Excellence dans la communication et la satisfaction clientèle',
-                color: 'from-teal-600 to-green-600'
+                description: 'Développement de concepts business et optimisation des performances',
+                color: 'from-orange-500 to-orange-700'
               }
             ].map((skill, index) => (
               <motion.div
@@ -506,12 +474,12 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
               >
-                <Card className="glass neon-glow h-full hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 cursor-pointer group">
+                <Card className="glass neon-glow h-full hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 cursor-pointer group">
                   <CardContent className="p-6 text-center">
                     <div className={`w-16 h-16 bg-gradient-to-br ${skill.color} rounded-full flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300`}>
                       <skill.icon className="h-8 w-8 text-white" />
                     </div>
-                    <h3 className="text-lg font-bold mb-3 text-purple-400 group-hover:text-purple-300 transition-colors duration-300">{skill.title}</h3>
+                    <h3 className="text-lg font-bold mb-3 text-orange-400 group-hover:text-orange-300 transition-colors duration-300">{skill.title}</h3>
                     <p className="text-gray-300 group-hover:text-white transition-colors duration-300 text-sm leading-relaxed">
                       {skill.description}
                     </p>
@@ -532,14 +500,13 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 neon-text">Contact</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-orange-400">Contact</h2>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Contact Form */}
             <Card className="glass neon-glow">
               <CardContent className="p-6">
-                <h3 className="text-2xl font-bold mb-6 text-purple-400">Écrivez-moi</h3>
+                <h3 className="text-2xl font-bold mb-6 text-orange-400">Écrivez-moi</h3>
                 <form className="space-y-4">
                   <Input
                     placeholder="Votre nom"
@@ -555,7 +522,7 @@ export default function Home() {
                     rows={5}
                     className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
                   />
-                  <Button className="w-full bg-purple-600 hover:bg-purple-700 neon-glow">
+                  <Button className="w-full bg-orange-400 hover:bg-orange-500 text-black neon-glow">
                     <Mail className="mr-2 h-4 w-4" />
                     Envoyer
                   </Button>
@@ -563,16 +530,15 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            {/* Contact Info & Links */}
             <div className="space-y-6">
               <Card className="glass neon-glow">
                 <CardContent className="p-6">
-                  <h3 className="text-2xl font-bold mb-6 text-purple-400">Retrouvez-moi</h3>
+                  <h3 className="text-2xl font-bold mb-6 text-orange-400">Retrouvez-moi</h3>
                   <div className="space-y-4">
                     <Button
                       asChild
                       variant="outline"
-                      className="w-full glass border-purple-400 text-white hover:bg-purple-600"
+                      className="w-full glass border-orange-400 text-white hover:bg-orange-400 hover:text-black"
                     >
                       <a
                         href="https://www.linkedin.com/in/raphael-theuillon-689139261/"
@@ -588,7 +554,7 @@ export default function Home() {
                     <Button
                       asChild
                       variant="outline"
-                      className="w-full glass border-purple-400 text-white hover:bg-purple-600"
+                      className="w-full glass border-orange-400 text-white hover:bg-orange-400 hover:text-black"
                     >
                       <a
                         href="https://github.com/Raphael91000"
@@ -604,7 +570,7 @@ export default function Home() {
                     <Button
                       asChild
                       variant="outline"
-                      className="w-full glass border-purple-400 text-white hover:bg-purple-600"
+                      className="w-full glass border-orange-400 text-white hover:bg-orange-400 hover:text-black"
                     >
                       <a
                         href="https://www.fiverr.com/users/raph910/seller_dashboard"
@@ -621,7 +587,7 @@ export default function Home() {
               </Card>
 
               <Button
-                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 neon-glow"
+                className="w-full bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-500 hover:to-orange-700 text-black neon-glow"
                 size="lg"
               >
                 <Download className="mr-2 h-4 w-4" />
