@@ -142,7 +142,13 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-6xl md:text-8xl font-bold mb-8 neon-text bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+              className="text-6xl md:text-8xl font-bold mb-8"
+              style={{
+                background: 'linear-gradient(135deg, #c084fc 0%, #6b21a8 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}
             >
               Welcome
             </motion.h1>
