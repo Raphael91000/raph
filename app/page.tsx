@@ -159,8 +159,9 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-gray-300 text-lg mb-8 leading-relaxed max-w-lg"
             >
-              Passionné par l'innovation technologique et le marketing digital, je combine expertise commerciale 
-              et maîtrise des outils d'intelligence artificielle pour créer des solutions automatisées performantes.
+              Technico-commercial avec une solide expérience en gestion d'entreprise, vente et bâtiment. 
+              Doté d'un fort esprit d'initiative et passionné par l'entrepreneuriat, le digital et les 
+              technologies innovantes, notamment l'intelligence artificielle.
             </motion.p>
 
             <motion.div
@@ -171,7 +172,7 @@ export default function Home() {
             >
               <span className="text-purple-400 font-semibold">
                 <Typewriter
-                  words={['commercial', 'digital marketing', 'réseaux sociaux', 'e-commerce', 'intelligence artificielle', 'agent IA']}
+                  words={['technico-commercial', 'entrepreneur', 'gestion d\'équipe', 'marketing digital', 'intelligence artificielle', 'création d\'entreprise']}
                   loop={0}
                   cursor
                   cursorStyle='_'
@@ -337,10 +338,11 @@ export default function Home() {
                   <div className="text-left">
                     <h3 className="text-2xl font-bold mb-4 text-purple-400">Raphaël Theuillon</h3>
                     <p className="text-gray-300 leading-relaxed">
-                      Passionné par l'innovation technologique et le marketing digital, je combine expertise commerciale 
-                      et maîtrise des outils d'intelligence artificielle pour créer des solutions automatisées performantes. 
-                      Mon approche unique allie stratégie commerciale, créativité digitale et technologies de pointe pour 
-                      optimiser les performances de mes clients.
+                      Technico-commercial avec une solide expérience en gestion d'entreprise, vente et bâtiment. 
+                      Doté d'un fort esprit d'initiative, d'une excellente capacité d'adaptation et d'un goût prononcé 
+                      pour le travail en équipe ou en autonomie. Passionné par l'entrepreneuriat, le digital et les 
+                      technologies innovantes, je combine expertise commerciale et maîtrise des outils d'IA pour créer 
+                      des solutions automatisées performantes.
                     </p>
                   </div>
                 </div>
@@ -369,31 +371,45 @@ export default function Home() {
             {/* Timeline items */}
             {[
               {
-                year: '2024',
-                title: 'Expert en Intelligence Artificielle',
-                description: 'Création d\'agents IA personnalisés et automatisation de processus métier',
+                year: '2023-2024',
+                title: 'Technico-commercial - Murprotec',
+                description: 'Prospection terrain, gestion relation client, formation nouveaux commerciaux et participation stratégie développement',
                 type: 'experience',
                 side: 'left'
               },
               {
-                year: '2023',
-                title: 'Consultant Digital Marketing',
-                description: 'Stratégies multicanales pour e-commerce et optimisation ROI',
+                year: '2022-2023',
+                title: 'Technico-commercial - CTBG',
+                description: 'Développement portefeuille client, stratégies commerciales, supervision planning et encadrement équipes',
                 type: 'experience',
                 side: 'right'
               },
               {
                 year: '2022',
-                title: 'Spécialiste E-commerce',
-                description: 'Gestion complète de boutiques en ligne et growth hacking',
-                type: 'experience',
+                title: 'Restaurant Le Kin Di Thaï (Associé)',
+                description: 'Création et organisation complète, recrutement équipes, stratégie marketing digital et optimisation livraison',
+                type: 'project',
                 side: 'left'
               },
               {
-                year: '2021',
-                title: 'Développeur Commercial',
-                description: 'Prospection digitale et développement de portefeuille client',
-                type: 'experience',
+                year: '2021-2024',
+                title: 'Entreprise de transport colis (Associé)',
+                description: 'Création, gestion de flotte, optimisation tournées avec scan automatisé et négociation tarifaire',
+                type: 'project',
+                side: 'right'
+              },
+              {
+                year: '2022-2023',
+                title: 'Wash Center',
+                description: 'Lancement projet, développement concept, management équipe et marketing digital',
+                type: 'project',
+                side: 'left'
+              },
+              {
+                year: '2019-2021',
+                title: 'BTS Bâtiment (Alternance)',
+                description: 'Formation en alternance chez Cazy Guillaume - CFA BTP Blois',
+                type: 'formation',
                 side: 'right'
               }
             ].map((item, index) => (
@@ -433,54 +449,72 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-bold mb-8 neon-text">Compétences</h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
             {[
               {
-                title: 'Digital & IA',
+                title: 'Agents IA',
                 icon: Brain,
-                skills: ['Automatisation', 'Agents IA', 'Machine Learning', 'Data Analysis', 'Python', 'API Integration'],
+                description: 'Création d\'agents IA personnalisés et automatisation de processus métier',
                 color: 'from-purple-600 to-blue-600'
               },
               {
-                title: 'Commercial',
+                title: 'Marketing Digital',
                 icon: Target,
-                skills: ['Prospection', 'Négociation', 'CRM', 'Lead Generation', 'Sales Funnel', 'KPI Analysis'],
+                description: 'Stratégies multicanales, création de contenus et optimisation ROI',
                 color: 'from-pink-600 to-purple-600'
               },
               {
-                title: 'Soft Skills',
+                title: 'Gestion d\'équipe',
                 icon: Users,
-                skills: ['Leadership', 'Communication', 'Gestion de projet', 'Créativité', 'Adaptabilité', 'Esprit d\'équipe'],
+                description: 'Management, formation et encadrement des équipes commerciales',
                 color: 'from-blue-600 to-teal-600'
+              },
+              {
+                title: 'Prospection terrain',
+                icon: Target,
+                description: 'Développement portefeuille client et négociation commerciale',
+                color: 'from-green-600 to-blue-600'
+              },
+              {
+                title: 'Développement web',
+                icon: Code,
+                description: 'Création de sites web et applications avec technologies modernes',
+                color: 'from-orange-600 to-red-600'
+              },
+              {
+                title: 'Création d\'entreprise',
+                icon: Zap,
+                description: 'Lancement de projets, gestion complète et développement business',
+                color: 'from-yellow-600 to-orange-600'
+              },
+              {
+                title: 'Automatisation',
+                icon: Brain,
+                description: 'Optimisation des processus et mise en place de solutions automatisées',
+                color: 'from-indigo-600 to-purple-600'
+              },
+              {
+                title: 'Relation client',
+                icon: MessageSquare,
+                description: 'Excellence dans la communication et la satisfaction clientèle',
+                color: 'from-teal-600 to-green-600'
               }
-            ].map((category, index) => (
+            ].map((skill, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
               >
                 <Card className="glass neon-glow h-full hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 cursor-pointer group">
-                  <CardContent className="p-6">
-                    <div className={`w-16 h-16 bg-gradient-to-br ${category.color} rounded-full flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300`}>
-                      <category.icon className="h-8 w-8 text-white" />
+                  <CardContent className="p-6 text-center">
+                    <div className={`w-16 h-16 bg-gradient-to-br ${skill.color} rounded-full flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300`}>
+                      <skill.icon className="h-8 w-8 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold mb-4 text-center text-purple-400 group-hover:text-purple-300 transition-colors duration-300">{category.title}</h3>
-                    <div className="space-y-2">
-                      {category.skills.map((skill, skillIndex) => (
-                        <div key={skillIndex} className="flex items-center justify-between">
-                          <span className="text-gray-300 group-hover:text-white transition-colors duration-300">{skill}</span>
-                          <div className="w-16 h-2 bg-gray-700 rounded-full overflow-hidden">
-                            <motion.div
-                              initial={{ width: 0 }}
-                              whileInView={{ width: `${85 + Math.random() * 15}%` }}
-                              transition={{ duration: 1, delay: skillIndex * 0.1 }}
-                              className={`h-full bg-gradient-to-r ${category.color}`}
-                            ></motion.div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                    <h3 className="text-lg font-bold mb-3 text-purple-400 group-hover:text-purple-300 transition-colors duration-300">{skill.title}</h3>
+                    <p className="text-gray-300 group-hover:text-white transition-colors duration-300 text-sm leading-relaxed">
+                      {skill.description}
+                    </p>
                   </CardContent>
                 </Card>
               </motion.div>
