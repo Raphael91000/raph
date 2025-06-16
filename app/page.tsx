@@ -41,7 +41,7 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-const scrollToSection = (sectionId: string) => {
+  const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -339,6 +339,25 @@ const scrollToSection = (sectionId: string) => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-8 text-orange-400">Mon Parcours</h2>
+            
+            {/* Légende */}
+            <div className="flex flex-wrap justify-center gap-4 mb-8">
+              <div className="flex items-center gap-2 bg-gray-900/50 px-4 py-2 rounded-full border border-orange-400/30">
+                <span>💼</span>
+                <div className="w-3 h-3 bg-orange-400 rounded-full"></div>
+                <span className="text-sm text-orange-400">Expériences Professionnelles</span>
+              </div>
+              <div className="flex items-center gap-2 bg-gray-900/50 px-4 py-2 rounded-full border border-green-400/30">
+                <span>🚀</span>
+                <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                <span className="text-sm text-green-400">Projets Personnels</span>
+              </div>
+              <div className="flex items-center gap-2 bg-gray-900/50 px-4 py-2 rounded-full border border-blue-400/30">
+                <span>🎓</span>
+                <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
+                <span className="text-sm text-blue-400">Formation</span>
+              </div>
+            </div>
           </motion.div>
 
           <div className="relative">
@@ -349,37 +368,49 @@ const scrollToSection = (sectionId: string) => {
                 year: '2023-2024',
                 title: 'Technico-commercial - Murprotec',
                 description: 'Prospection terrain, gestion relation client, formation nouveaux commerciaux et participation stratégie développement',
-                side: 'left'
+                side: 'left',
+                type: 'experience',
+                icon: '💼'
               },
               {
                 year: '2022-2023',
                 title: 'Technico-commercial - CTBG',
                 description: 'Développement portefeuille client, stratégies commerciales, supervision planning et encadrement équipes',
-                side: 'right'
+                side: 'right',
+                type: 'experience',
+                icon: '💼'
               },
               {
-                year: '2022',
+                year: '2022-2024',
                 title: 'Restaurant Le Kin Di Thaï (Associé)',
                 description: 'Création et organisation complète, recrutement équipes, stratégie marketing digital et optimisation livraison',
-                side: 'left'
+                side: 'left',
+                type: 'project',
+                icon: '🚀'
               },
               {
                 year: '2021-2024',
                 title: 'Entreprise de transport colis (Associé)',
                 description: 'Création, gestion de flotte, optimisation tournées avec scan automatisé et négociation tarifaire',
-                side: 'right'
+                side: 'right',
+                type: 'project',
+                icon: '🚀'
               },
               {
                 year: '2022-2023',
                 title: 'Wash Center',
                 description: 'Lancement projet, développement concept, management équipe et marketing digital',
-                side: 'left'
+                side: 'left',
+                type: 'project',
+                icon: '🚀'
               },
               {
                 year: '2019-2021',
                 title: 'BTS Bâtiment (Alternance)',
                 description: 'Formation en alternance chez Cazy Guillaume - CFA BTP Blois',
-                side: 'right'
+                side: 'right',
+                type: 'formation',
+                icon: '🎓'
               }
             ].map((item, index) => (
               <motion.div
@@ -390,12 +421,38 @@ const scrollToSection = (sectionId: string) => {
                 className={`relative mb-12 ${item.side === 'left' ? 'text-right pr-8' : 'text-left pl-8'} 
                   ${item.side === 'left' ? 'md:mr-1/2' : 'md:ml-1/2'}`}
               >
-                <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-orange-400 rounded-full border-4 border-black neon-glow"></div>
+                <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full border-4 border-black neon-glow" style={{
+                  background: item.type === 'experience' ? '#fb923c' : item.type === 'project' ? '#22c55e' : '#3b82f6'
+                }}></div>
                 
-                <Card className="glass neon-glow">
+                <Card className="glass neon-glow" style={{
+                  borderColor: item.type === 'experience' ? 'rgba(251, 146, 60, 0.3)' : item.type === 'project' ? 'rgba(34, 197, 94, 0.3)' : 'rgba(59, 130, 246, 0.3)'
+                }}>
                   <CardContent className="p-6">
-                    <Badge className="mb-2 bg-orange-400 text-black">{item.year}</Badge>
-                    <h3 className="text-xl font-bold mb-2 text-orange-400">{item.title}</h3>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-lg">{item.icon}</span>
+                      <Badge 
+                        className="text-black font-bold" 
+                        style={{
+                          background: item.type === 'experience' ? '#fb923c' : item.type === 'project' ? '#22c55e' : '#3b82f6'
+                        }}
+                      >
+                        {item.year}
+                      </Badge>
+                      <Badge 
+                        variant="outline" 
+                        className="text-xs"
+                        style={{
+                          borderColor: item.type === 'experience' ? '#fb923c' : item.type === 'project' ? '#22c55e' : '#3b82f6',
+                          color: item.type === 'experience' ? '#fb923c' : item.type === 'project' ? '#22c55e' : '#3b82f6'
+                        }}
+                      >
+                        {item.type === 'experience' ? 'Expérience Pro' : item.type === 'project' ? 'Projet Personnel' : 'Formation'}
+                      </Badge>
+                    </div>
+                    <h3 className="text-xl font-bold mb-2" style={{
+                      color: item.type === 'experience' ? '#fb923c' : item.type === 'project' ? '#22c55e' : '#3b82f6'
+                    }}>{item.title}</h3>
                     <p className="text-gray-300">{item.description}</p>
                   </CardContent>
                 </Card>
@@ -606,6 +663,193 @@ const scrollToSection = (sectionId: string) => {
           </p>
         </div>
       </footer>
+
+      <style jsx>{`
+        /* Base responsive styles */
+        .glass {
+          background: rgba(25, 25, 25, 0.8);
+          backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 147, 41, 0.2);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .neon-glow {
+          box-shadow: 0 0 20px rgba(255, 147, 41, 0.3);
+        }
+
+        /* Particle animation */
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          33% { transform: translateY(-10px) rotate(120deg); }
+          66% { transform: translateY(-5px) rotate(240deg); }
+        }
+
+        .floating {
+          animation: float 6s ease-in-out infinite;
+        }
+
+        /* Social buttons effect */
+        .social-button {
+          position: relative;
+        }
+
+        .floater {
+          transition: all 0.3s ease;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+          background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: linear-gradient(135deg, #ff9329, #ffb366);
+          border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(135deg, #e8760e, #ff9329);
+        }
+
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+          .text-6xl {
+            font-size: 3rem;
+          }
+          
+          .text-8xl {
+            font-size: 4rem;
+          }
+          
+          .text-4xl {
+            font-size: 2rem;
+          }
+          
+          .text-5xl {
+            font-size: 2.5rem;
+          }
+          
+          /* Hero section mobile */
+          #home {
+            flex-direction: column;
+            text-align: center;
+            padding: 2rem 1rem;
+          }
+          
+          #home .flex-1:last-child {
+            margin-top: 2rem;
+          }
+          
+          #home .w-96 {
+            width: 16rem;
+            height: 16rem;
+          }
+          
+          /* Timeline mobile */
+          .md\\:mr-1\\/2, .md\\:ml-1\\/2 {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            padding-left: 2rem !important;
+            padding-right: 1rem !important;
+            text-align: left !important;
+          }
+          
+          /* Skills grid mobile */
+          .lg\\:grid-cols-4 {
+            grid-template-columns: repeat(1, 1fr);
+          }
+          
+          .md\\:grid-cols-3 {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          
+          /* Contact grid mobile */
+          .md\\:grid-cols-2 {
+            grid-template-columns: repeat(1, 1fr);
+          }
+          
+          /* About section mobile */
+          .md\\:flex-row {
+            flex-direction: column;
+          }
+          
+          /* Navigation mobile improvements */
+          .hidden.md\\:flex {
+            display: none;
+          }
+          
+          /* Légende mobile */
+          .flex-wrap {
+            flex-direction: column;
+            align-items: center;
+          }
+          
+          .flex-wrap > div {
+            margin-bottom: 0.5rem;
+          }
+        }
+
+        /* Tablet responsive */
+        @media (max-width: 1024px) and (min-width: 769px) {
+          .lg\\:grid-cols-4 {
+            grid-template-columns: repeat(3, 1fr);
+          }
+          
+          #home .w-96 {
+            width: 20rem;
+            height: 20rem;
+          }
+        }
+
+        /* Small mobile adjustments */
+        @media (max-width: 480px) {
+          .text-6xl {
+            font-size: 2.5rem;
+          }
+          
+          .text-8xl {
+            font-size: 3rem;
+          }
+          
+          .px-8 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+          }
+          
+          .gap-4 {
+            gap: 0.75rem;
+          }
+          
+          .w-12 {
+            width: 2.5rem;
+            height: 2.5rem;
+          }
+          
+          .md\\:grid-cols-3 {
+            grid-template-columns: repeat(1, 1fr);
+          }
+          
+          .max-w-lg {
+            max-width: 100%;
+          }
+          
+          #home .w-96 {
+            width: 14rem;
+            height: 14rem;
+          }
+        }
+
+        /* Ultra wide screen adjustments */
+        @media (min-width: 1920px) {
+          .max-w-7xl {
+            max-width: 90rem;
+          }
+        }
+      `}</style>
     </div>
   );
 }
