@@ -41,7 +41,7 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId) => {
+  const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -733,20 +733,56 @@ export default function Home() {
             font-size: 2.5rem;
           }
           
-          /* Hero section mobile */
-          #home {
-            flex-direction: column;
-            text-align: center;
-            padding: 2rem 1rem;
+          /* Hero section mobile - KEEP SIDE BY SIDE */
+          #home .flex {
+            flex-direction: row !important;
+          }
+          
+          #home .flex-1:first-child {
+            flex: 0.6;
+            max-width: 60%;
           }
           
           #home .flex-1:last-child {
-            margin-top: 2rem;
+            flex: 0.4;
+            max-width: 40%;
+            margin-top: 0;
           }
           
           #home .w-96 {
-            width: 16rem;
-            height: 16rem;
+            width: 10rem;
+            height: 10rem;
+          }
+          
+          #home .text-lg {
+            font-size: 0.9rem;
+          }
+          
+          #home .text-xl {
+            font-size: 1rem;
+          }
+          
+          #home .text-2xl {
+            font-size: 1.1rem;
+          }
+          
+          #home .px-8 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+          }
+          
+          #home .gap-4 {
+            gap: 0.5rem;
+          }
+          
+          #home .w-12 {
+            width: 2rem;
+            height: 2rem;
+          }
+          
+          #home .h-5 {
+            width: 1rem;
+            height: 1rem;
           }
           
           /* Timeline mobile */
@@ -808,25 +844,54 @@ export default function Home() {
         /* Small mobile adjustments */
         @media (max-width: 480px) {
           .text-6xl {
-            font-size: 2.5rem;
+            font-size: 2rem;
           }
           
           .text-8xl {
-            font-size: 3rem;
+            font-size: 2.5rem;
           }
           
-          .px-8 {
-            padding-left: 1rem;
-            padding-right: 1rem;
+          #home .flex-1:first-child {
+            flex: 0.65;
+            max-width: 65%;
           }
           
-          .gap-4 {
-            gap: 0.75rem;
+          #home .flex-1:last-child {
+            flex: 0.35;
+            max-width: 35%;
           }
           
-          .w-12 {
-            width: 2.5rem;
-            height: 2.5rem;
+          #home .w-96 {
+            width: 8rem;
+            height: 8rem;
+          }
+          
+          #home .text-lg {
+            font-size: 0.8rem;
+            line-height: 1.2;
+          }
+          
+          #home .leading-relaxed {
+            max-width: 100%;
+          }
+          
+          #home .gap-4 {
+            gap: 0.25rem;
+          }
+          
+          #home .w-12 {
+            width: 1.75rem;
+            height: 1.75rem;
+          }
+          
+          #home .px-8 {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+          }
+          
+          #home .py-3 {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
           }
           
           .md\\:grid-cols-3 {
@@ -837,9 +902,13 @@ export default function Home() {
             max-width: 100%;
           }
           
-          #home .w-96 {
-            width: 14rem;
-            height: 14rem;
+          /* Ensure AI circle stays visible */
+          #home .inset-24 {
+            inset: 1.5rem;
+          }
+          
+          #home .text-4xl {
+            font-size: 1.5rem;
           }
         }
 
